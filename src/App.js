@@ -5,7 +5,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [team, setTeam] = useState([]);
 
-  // Fetch Pokémon on mount
+
   useEffect(() => {
     const fetchAllPokemon = async () => {
       const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
@@ -107,7 +107,7 @@ function App() {
     });
 
     p.types.forEach((type) => {
-      // You can use your own weakness logic here or map like below
+      
       const weakTo = typeWeaknessMap[type];
       if (weakTo) {
         weakTo.forEach((w) => weaknesses.add(w));
@@ -159,7 +159,7 @@ function App() {
           )}
         </div>
 
-        {/* Add total stats and weaknesses here */}
+        {}
         <div
           style={{
             marginTop: "1rem",
@@ -279,7 +279,7 @@ const typeColors = {
   normal: "#A8A878",
 };
 
-// 🎨 Styles (Dark Mode)
+
 const styles = {
   body: {
     background:
@@ -296,7 +296,7 @@ const styles = {
   stats: {
     marginTop: "0.7rem",
     fontSize: "0.8rem",
-    backgroundColor: "#1f1f1f", // lighter than card bg for contrast
+    backgroundColor: "#1f1f1f", 
     borderRadius: "8px",
     padding: "0.5rem 0.7rem",
     color: "#ccc",
@@ -388,20 +388,20 @@ const styles = {
   },
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", // smaller min width
+    gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", 
     gap: "2.9rem",
   },
 
   card: {
     backgroundColor: "rgba(0,0,0,0.7)",
     borderRadius: "16px",
-    padding: "1rem 1.2rem", // reduce horizontal padding a bit
+    padding: "1rem 1.2rem", 
     textAlign: "center",
     cursor: "pointer",
     boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
     transition: "transform 0.2s, box-shadow 0.2s",
     userSelect: "none",
-    maxWidth: "220px", // max width instead of fixed
+    maxWidth: "220px", 
     width: "100%",
     height: "300px",
     display: "flex",
