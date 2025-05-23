@@ -4,9 +4,43 @@ function App() {
   const [allPokemon, setAllPokemon] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [team, setTeam] = useState([]);
+  
+  useEffect(() => {
+    const savedTeamUrls = JSON.parse(localStorage.getItem("pokemonTeam") || "[]");
+  
+    const fetchSavedTeam = async () => {
+      const teamData = await Promise.all(
+        savedTeamUrls.map(async (url) => {
+          const res = await fetch(url);
+          const data = await res.json();
+          return {
+            name: data.name,
+            sprite: data.sprites.front_default,
+            url,
+            types: data.types.map((t) => t.type.name),
+            stats: data.stats.map((stat) => ({
+              name: stat.stat.name,
+              value: stat.base_stat,
+            })),
+          };
+        })
+      );
+      setTeam(teamData);
+    };
+  
+    if (savedTeamUrls.length > 0) {
+      fetchSavedTeam();
+    }
+  }, []);
+
+  useEffect(() => {
+    const savedTeamUrls = team.map((p) => p.url);
+    localStorage.setItem("pokemonTeam", JSON.stringify(savedTeamUrls));
+  }, [team]);
 
 
   useEffect(() => {
+    
     const fetchAllPokemon = async () => {
       const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
       const data = await res.json();
@@ -122,7 +156,7 @@ function App() {
         rel="stylesheet"
       />
       <div style={styles.container}>
-        <h1 style={styles.heading}>🌙 Pokémon Team Builder</h1>
+        <h1 style={styles.heading}> Pokémon Team Builder</h1>
 
         <input
           type="text"

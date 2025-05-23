@@ -49,3 +49,54 @@
 }
 
 
+.team-name-input {
+  width: 100%;
+  display:none; 
+  max-width: 300px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-name-input:focus {
+  outline: none;
+  border-color: #6890f0; /* subtle blue highlight */
+  box-shadow: 0 0 8px #6890f0;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.team-btn {
+  background: rgba(104, 144, 240, 0.7);
+  color: white;
+  padding: 0.5rem 1.3rem;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 1rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(104, 144, 240, 0.6);
+}
+
+.team-btn:hover {
+  background: rgba(104, 144, 240, 1);
+  box-shadow: 0 6px 20px rgba(104, 144, 240, 0.8);
+}
+
+.team-save-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
